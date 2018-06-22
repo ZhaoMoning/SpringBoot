@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easense.dingTalklogin.dao.BaseUserMapper">
+  <resultMap id="BaseResultMap" type="com.easense.dingTalklogin.bean.BaseUser">
+    <id column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="usercode" jdbcType="VARCHAR" property="usercode" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="useraccount" jdbcType="VARCHAR" property="useraccount" />
+    <result column="userpassword" jdbcType="VARCHAR" property="userpassword" />
+    <result column="userorgid" jdbcType="BIGINT" property="userorgid" />
+    <result column="usertype" jdbcType="VARCHAR" property="usertype" />
+    <result column="userphone" jdbcType="VARCHAR" property="userphone" />
+    <result column="useremail" jdbcType="VARCHAR" property="useremail" />
+    <result column="userQ" jdbcType="VARCHAR" property="userq" />
+    <result column="userA" jdbcType="VARCHAR" property="usera" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="createuserid" jdbcType="BIGINT" property="createuserid" />
+    <result column="numberofuse" jdbcType="INTEGER" property="numberofuse" />
+    <result column="deletemark" jdbcType="BIT" property="deletemark" />
+    <result column="user1" jdbcType="VARCHAR" property="user1" />
+    <result column="user2" jdbcType="VARCHAR" property="user2" />
+    <result column="user3" jdbcType="VARCHAR" property="user3" />
+    <result column="user4" jdbcType="VARCHAR" property="user4" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userid, usercode, username, useraccount, userpassword, userorgid, usertype, userphone, 
+    useremail, userQ, userA, createdate, createuserid, numberofuse, deletemark, user1, 
+    user2, user3, user4, state, remarks
+  </sql>
+  
+    <select id="selectAll" resultMap="BaseResultMap">
+    	select 
+    	<include refid="Base_Column_List" />
+    	from base_user
+  	</select>
+  
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from base_user
+    where userid = #{userid,jdbcType=BIGINT}
+  </select>
+  
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from base_user
+    where userid = #{userid,jdbcType=BIGINT}
+  </delete>
+  
+  <insert id="insert" parameterType="com.easense.dingTalklogin.bean.BaseUser">
+    insert into base_user (userid, usercode, username, 
+      useraccount, userpassword, userorgid, 
+      usertype, userphone, useremail, 
+      userQ, userA, createdate, 
+      createuserid, numberofuse, deletemark, 
+      user1, user2, user3, 
+      user4, state, remarks
+      )
+    values (#{userid,jdbcType=BIGINT}, #{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{useraccount,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}, #{userorgid,jdbcType=BIGINT}, 
+      #{usertype,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR}, #{useremail,jdbcType=VARCHAR}, 
+      #{userq,jdbcType=VARCHAR}, #{usera,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{createuserid,jdbcType=BIGINT}, #{numberofuse,jdbcType=INTEGER}, #{deletemark,jdbcType=BIT}, 
+      #{user1,jdbcType=VARCHAR}, #{user2,jdbcType=VARCHAR}, #{user3,jdbcType=VARCHAR}, 
+      #{user4,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.easense.dingTalklogin.bean.BaseUser">
+    insert into base_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="usercode != null">
+        usercode,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="useraccount != null">
+        useraccount,
+      </if>
+      <if test="userpassword != null">
+        userpassword,
+      </if>
+      <if test="userorgid != null">
+        userorgid,
+      </if>
+      <if test="usertype != null">
+        usertype,
+      </if>
+      <if test="userphone != null">
+        userphone,
+      </if>
+      <if test="useremail != null">
+        useremail,
+      </if>
+      <if test="userq != null">
+        userQ,
+      </if>
+      <if test="usera != null">
+        userA,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="createuserid != null">
+        createuserid,
+      </if>
+      <if test="numberofuse != null">
+        numberofuse,
+      </if>
+      <if test="deletemark != null">
+        deletemark,
+      </if>
+      <if test="user1 != null">
+        user1,
+      </if>
+      <if test="user2 != null">
+        user2,
+      </if>
+      <if test="user3 != null">
+        user3,
+      </if>
+      <if test="user4 != null">
+        user4,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccount != null">
+        #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null">
+        #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userorgid != null">
+        #{userorgid,jdbcType=BIGINT},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null">
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userq != null">
+        #{userq,jdbcType=VARCHAR},
+      </if>
+      <if test="usera != null">
+        #{usera,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null">
+        #{createuserid,jdbcType=BIGINT},
+      </if>
+      <if test="numberofuse != null">
+        #{numberofuse,jdbcType=INTEGER},
+      </if>
+      <if test="deletemark != null">
+        #{deletemark,jdbcType=BIT},
+      </if>
+      <if test="user1 != null">
+        #{user1,jdbcType=VARCHAR},
+      </if>
+      <if test="user2 != null">
+        #{user2,jdbcType=VARCHAR},
+      </if>
+      <if test="user3 != null">
+        #{user3,jdbcType=VARCHAR},
+      </if>
+      <if test="user4 != null">
+        #{user4,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easense.dingTalklogin.bean.BaseUser">
+    update base_user
+    <set>
+      <if test="usercode != null">
+        usercode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="useraccount != null">
+        useraccount = #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null">
+        userpassword = #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userorgid != null">
+        userorgid = #{userorgid,jdbcType=BIGINT},
+      </if>
+      <if test="usertype != null">
+        usertype = #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null">
+        userphone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        useremail = #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="userq != null">
+        userQ = #{userq,jdbcType=VARCHAR},
+      </if>
+      <if test="usera != null">
+        userA = #{usera,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null">
+        createuserid = #{createuserid,jdbcType=BIGINT},
+      </if>
+      <if test="numberofuse != null">
+        numberofuse = #{numberofuse,jdbcType=INTEGER},
+      </if>
+      <if test="deletemark != null">
+        deletemark = #{deletemark,jdbcType=BIT},
+      </if>
+      <if test="user1 != null">
+        user1 = #{user1,jdbcType=VARCHAR},
+      </if>
+      <if test="user2 != null">
+        user2 = #{user2,jdbcType=VARCHAR},
+      </if>
+      <if test="user3 != null">
+        user3 = #{user3,jdbcType=VARCHAR},
+      </if>
+      <if test="user4 != null">
+        user4 = #{user4,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easense.dingTalklogin.bean.BaseUser">
+    update base_user
+    set usercode = #{usercode,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      useraccount = #{useraccount,jdbcType=VARCHAR},
+      userpassword = #{userpassword,jdbcType=VARCHAR},
+      userorgid = #{userorgid,jdbcType=BIGINT},
+      usertype = #{usertype,jdbcType=VARCHAR},
+      userphone = #{userphone,jdbcType=VARCHAR},
+      useremail = #{useremail,jdbcType=VARCHAR},
+      userQ = #{userq,jdbcType=VARCHAR},
+      userA = #{usera,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      createuserid = #{createuserid,jdbcType=BIGINT},
+      numberofuse = #{numberofuse,jdbcType=INTEGER},
+      deletemark = #{deletemark,jdbcType=BIT},
+      user1 = #{user1,jdbcType=VARCHAR},
+      user2 = #{user2,jdbcType=VARCHAR},
+      user3 = #{user3,jdbcType=VARCHAR},
+      user4 = #{user4,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=BIGINT}
+  </update>
+</mapper>
