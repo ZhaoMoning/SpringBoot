@@ -139,7 +139,7 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
         </dependency>
-        
+        <!-- 加个注解测一下 -->
         
 	</dependencies>
 
